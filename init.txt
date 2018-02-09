@@ -1,0 +1,4 @@
+php composer.phar install
+http://yiicms.com:10380/
+http://yiicms.com:10380/backend/
+admin/admin
