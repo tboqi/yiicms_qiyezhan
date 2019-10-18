@@ -26,8 +26,11 @@ phpunit.phar
 # local phpunit config
 /phpunit.xml
 
+vendor
+composer.lock
+
 tests/_output/*
 tests/_support/_generated
 web/uploads/*
 web/assets/*
-config/db.php
+#config/db.php
