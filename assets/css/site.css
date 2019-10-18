@@ -113,6 +113,12 @@ a.desc:after {
         width: 100%;
         padding: 10px 15px;
     }
+    h2,.h2,h3,.h3,h4,.h4{
+        font-size:14px
+    }
+    h5,.h5,h6,.h6{
+        font-size:12px
+    }
 }
 
 .nav > li > form > button.logout:focus,
@@ -164,6 +170,10 @@ a.desc:after {
         max-width: 120px;
         max-height: 24px;
     }
+}
+.carousel-inner > .item > img,
+.carousel-inner > .item > a > img{
+    min-height: 260px;
 }
 /* 自定义样式*/
 .panel {
