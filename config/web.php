@@ -1,25 +1,25 @@
 <?php
 use yii\helpers\ArrayHelper;
 $appPath = dirname(__DIR__);
-$params = ArrayHelper::merge(require(__DIR__ . '/params.php'), [
+$params = ArrayHelper::merge(require (__DIR__ . '/params.php'), [
     'mdm.admin.configs' => [
         'menuTable' => 'admin_menu',
         'userTable' => 'admin_user',
-    ]
+    ],
 ]);
-if(is_file($appPath . '/runtime/config/params.php')){
-    $params = ArrayHelper::merge($params, require($appPath . '/runtime/config/params.php'));
+if (is_file($appPath . '/runtime/config/params.php')) {
+    $params = ArrayHelper::merge($params, require ($appPath . '/runtime/config/params.php'));
 }
-$view = require(__DIR__ . '/view.php');
-if(is_file($appPath . '/runtime/config/view.php')){
-    $view = ArrayHelper::merge($view, require($appPath . '/runtime/config/view.php'));
+$view = require __DIR__ . '/view.php';
+if (is_file($appPath . '/runtime/config/view.php')) {
+    $view = ArrayHelper::merge($view, require ($appPath . '/runtime/config/view.php'));
 }
 
 $config = [
     'id' => 'basic',
     'basePath' => dirname(__DIR__),
 //    'bootstrap' => ['log','assetsAutoCompress'],
-    'bootstrap' => ['log',],
+    'bootstrap' => ['log'],
     'components' => [
         'assetsAutoCompress' => [
             'class' => '\skeeks\yii2\assetsAuto\AssetsAutoCompressComponent',
@@ -29,10 +29,10 @@ $config = [
             'cookieValidationKey' => 'Q-TAjtqKlLrK2nQLbeDDHBI00UPsApCB',
         ],
         'user' => [
-            'class'=>'yii\web\User',
+            'class' => 'yii\web\User',
             'identityClass' => 'app\modules\backend\models\AdminUserIdentity',
             'enableAutoLogin' => false,
-            'loginUrl'=>['backend/default/login']
+            'loginUrl' => ['backend/default/login'],
         ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
@@ -56,32 +56,32 @@ $config = [
                 ],
             ],
         ],
-        'db' => require(__DIR__ . '/db.php'),
+        'db' => require __DIR__ . '/db.php',
         'urlManager' => [
-            'suffix'=>'.html',
+            'suffix' => '.html',
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
-                'index'=>'site/index',
-                'about'=>'site/about',
-                'contact'=>'site/contact',
-                'search'=>'site/search',
-                'page/<id:\d+>'=>'site/page',
-                '<controller:[\w-]+>/<id:\d+>'=>'<controller>/item',
-                '<controller:[\w-]+>/list/<category-id:\d+>'=>'<controller>/list',
-                '404'=>'site/search-children'
+                'index' => 'site/index',
+                'about' => 'site/about',
+                'contact' => 'site/contact',
+                'search' => 'site/search',
+                'page/<id:\d+>' => 'site/page',
+                '<controller:[\w-]+>/<id:\d+>' => '<controller>/item',
+                '<controller:[\w-]+>/list/<category-id:\d+>' => '<controller>/list',
+                '404' => 'site/search-children',
             ],
         ],
-        'formatter'=>[
-            'class'=>'yii\i18n\Formatter',
-            'defaultTimeZone'=>'Asia/Shanghai',
-            'dateFormat'=>'php:Y-m-d',
-            'timeFormat'=>'php:H:i:s',
-            'datetimeFormat'=>'php:Y-m-d H:i:s'
+        'formatter' => [
+            'class' => 'yii\i18n\Formatter',
+            'defaultTimeZone' => 'Asia/Shanghai',
+            'dateFormat' => 'php:Y-m-d',
+            'timeFormat' => 'php:H:i:s',
+            'datetimeFormat' => 'php:Y-m-d H:i:s',
         ],
-        'view' =>&$view,
+        'view' => &$view,
         'i18n' => [
-            'class'=>'yii\i18n\I18N',
+            'class' => 'yii\i18n\I18N',
             'translations' => [
                 'rbac-admin' => [
                     'class' => 'yii\i18n\PhpMessageSource',
@@ -94,8 +94,8 @@ $config = [
         ],
     ],
     'params' => &$params,
-    'language'=>'zh-CN',
-    'sourceLanguage'=>'zh-CN',
+    'language' => 'zh-CN',
+    'sourceLanguage' => 'zh-CN',
     'modules' => [
         'backend' => [
             'class' => 'app\modules\backend\Module',
@@ -120,7 +120,7 @@ if (YII_ENV_DEV) {
     ];
 }
 
-if(isset($params['appName'])){
+if (isset($params['appName'])) {
     $config['name'] = $params['appName'];
 }
 return $config;
