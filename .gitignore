@@ -27,7 +27,7 @@ phpunit.phar
 /phpunit.xml
 
 vendor
-composer.lock
+#composer.lock
 
 tests/_output/*
 tests/_support/_generated
